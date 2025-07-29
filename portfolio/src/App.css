@@ -1,0 +1,189 @@
+:root {
+  --color-bg-light: #f5f7fa;
+  --color-bg-dark: #181c24;
+  --color-primary: #007396;
+  --color-accent: #ea2d2e;
+  --color-text-light: #222;
+  --color-text-dark: #f5f7fa;
+  --color-card-light: #fff;
+  --color-card-dark: #23272f;
+  --color-link-light: #007396;
+  --color-link-dark: #61dafb;
+}
+
+body[data-theme='dark'] {
+  --color-bg: var(--color-bg-dark);
+  --color-text: var(--color-text-dark);
+  --color-card: var(--color-card-dark);
+  --color-link: var(--color-link-dark);
+}
+body[data-theme='light'] {
+  --color-bg: var(--color-bg-light);
+  --color-text: var(--color-text-light);
+  --color-card: var(--color-card-light);
+  --color-link: var(--color-link-light);
+}
+
+.animated-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: linear-gradient(120deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  opacity: 0.15;
+  animation: bgMove 12s ease-in-out infinite alternate;
+}
+.animated-bg.dark {
+  background: linear-gradient(120deg, #23272f 0%, #007396 100%);
+}
+.animated-bg.light {
+  background: linear-gradient(120deg, #f5f7fa 0%, #ea2d2e 100%);
+}
+@keyframes bgMove {
+  0% { filter: blur(0px) brightness(1); }
+  100% { filter: blur(8px) brightness(1.2); }
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-bg);
+  color: var(--color-text);
+  position: relative;
+  z-index: 1;
+  transition: background 0.5s, color 0.5s;
+}
+
+.App-header {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  z-index: 2;
+}
+
+.logo-animated {
+  margin-bottom: 1.5rem;
+  animation: logoFloat 3s ease-in-out infinite alternate;
+}
+@keyframes logoFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-16px) scale(1.05); }
+}
+
+.mode-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 10;
+}
+.mode-toggle button {
+  background: var(--color-card);
+  color: var(--color-text);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s, color 0.3s;
+}
+.mode-toggle button:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0 0.2rem 0;
+  font-weight: 700;
+}
+.highlight {
+  color: var(--color-primary);
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+  color: var(--color-accent);
+}
+.desc {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+}
+.socials {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.socials a {
+  color: var(--color-link);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+.socials a:hover {
+  color: var(--color-accent);
+}
+
+.App-main {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem 1rem 1rem;
+  background: var(--color-card);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+  z-index: 2;
+}
+.about, .projects {
+  margin-bottom: 2rem;
+}
+.about h3, .projects h3 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+.projects ul {
+  list-style: disc inside;
+  padding-left: 1rem;
+}
+.projects li {
+  margin-bottom: 0.5rem;
+}
+
+.App-footer {
+  margin-top: auto;
+  padding: 1.5rem 0 1rem 0;
+  text-align: center;
+  color: var(--color-text);
+  font-size: 1rem;
+  background: transparent;
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .App-header, .App-main {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
+  .mode-toggle {
+    right: 1rem;
+    top: 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+}
